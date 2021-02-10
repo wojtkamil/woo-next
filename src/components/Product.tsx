@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import AddToCartButton from '../components/cart/AddToCartButton';
+import AddToCartButton from './cart/AddToCartButton';
 import clientConfig from '../../client-config';
 import { isEmpty } from 'lodash';
 import Price from "./single-product/price";
@@ -37,7 +37,7 @@ const Product = ( props ) => {
 
 			</div>
 		) : (
-			''
+			<></>
 		)
 	);
 };
