@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import {gql} from '@apollo/client';
 
 export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slug: ID!) {
 	productCategory(id: $slug, idType: SLUG) {
@@ -7,44 +7,44 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 	  products(first: 50) {
 		nodes {
 		  id
-		  productId
+			databaseId
 		  averageRating
 		  slug
-		  description
+		  description(format: RAW)
 		  image {
-			id
-			uri
-			title
-			srcSet
-			sourceUrl
+				id
+				uri
+				title
+				srcSet
+				sourceUrl
 		  }
 		  name
 		  ... on SimpleProduct {
-			price
-			regularPrice
-			id
+				price
+				regularPrice
+				id
 		  }
 		  ... on VariableProduct {
-			price
-			regularPrice
-			id
+				price
+				regularPrice
+				id
 		  }
 		  ... on ExternalProduct {
-			price
-			id
-			regularPrice
-			externalUrl
+				price
+				id
+				regularPrice
+				externalUrl
 		  }
 		  ... on GroupProduct {
-			products {
-			  nodes {
-				... on SimpleProduct {
-				  id
-				  regularPrice
-				  price
+				products {
+					nodes {
+						... on SimpleProduct {
+							id
+							regularPrice
+							price
+						}
+					}
 				}
-			  }
-			}
 			id
 		  }
 		}

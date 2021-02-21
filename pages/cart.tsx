@@ -1,11 +1,12 @@
+import React from 'react';
 
-import Layout from "components/Layout";
-import CartItemsContainer from "components/cart/cart-page/CartItemsContainer";
+import CartItemsContainer from 'components/cart/cart-page/CartItemsContainer';
+import Layout from 'components/Layout';
 
-const Cart = () => (
-	<Layout>
-		<CartItemsContainer/>
-	</Layout>
+const Cart = (): JSX.Element => (
+  <Layout>
+    <CartItemsContainer />
+  </Layout>
 );
 
 export default Cart;

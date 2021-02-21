@@ -2,11 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import Header from 'components/Header';
 import Router from 'next/router';
-import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Footer from 'components/Footer';
+import {AppProvider} from './context/AppContext';
 import client from './ApolloClient';
-import { AppProvider } from './context/AppContext';
+import {ApolloProvider} from '@apollo/client';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());

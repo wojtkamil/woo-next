@@ -4,20 +4,31 @@
   "plugins": [
     "@typescript-eslint",
     "react-hooks",
-    "schange-rules",
-    "react-native",
     "unused-imports",
-    "json",
     "import"
   ],
   "settings": {
-    "import/extensions": [".js",".jsx",".ts",".tsx",".json"],
+    "import/extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts",".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
+      "typescript": {},
       "node": {
-        "extensions": [".js",".jsx",".ts",".tsx",".json"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
     },
     "import/internal-regex": ".*\/",
@@ -29,7 +40,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:@typescript-eslint/recommended"
   ],
   "env": {
     "browser": true,
@@ -45,7 +57,112 @@
     }
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "react/prop-types": "off"
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    // note you must disable the base rule as it can report incorrect errors
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": [
+      "error"
+    ],
+    "react/prop-types": "off",
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "lines-between-class-members": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "never"
+    ],
+    "react/jsx-closing-bracket-location": [
+      "error",
+      {
+        "nonEmpty": "line-aligned",
+        "selfClosing": "tag-aligned"
+      }
+    ],
+    "react/jsx-closing-tag-location": "error",
+    "react/jsx-first-prop-new-line": [
+      "error",
+      "multiline-multiprop"
+    ],
+    "react/jsx-indent": [
+      "error",
+      2,
+      {
+        "indentLogicalExpressions": true
+      }
+    ],
+    "react/jsx-indent-props": [
+      "error",
+      2
+    ],
+    "react/jsx-max-props-per-line": [
+      "error",
+      {
+        "maximum": 1,
+        "when": "multiline"
+      }
+    ],
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-one-expression-per-line": [
+      "error",
+      {
+        "allow": "single-child"
+      }
+    ],
+    "react/jsx-props-no-multi-spaces": "error",
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "allow"
+      }
+    ],
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "parens-new-line",
+        "assignment": "parens-new-line",
+        "return": "parens-new-line",
+        "arrow": "parens-new-line",
+        "condition": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "parens-new-line"
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "index",
+            "sibling"
+          ]
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc", /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
+          "caseInsensitive": true /* ignore case. Options: [true, false] */
+        }
+      }
+    ]
   }
 }

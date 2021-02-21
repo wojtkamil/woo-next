@@ -1,20 +1,20 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client';
 
 export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 	product(id: $slug, idType: SLUG) {
-	  id
-	  productId
+		id
+		databaseId
 	  averageRating
 	  slug
-	  description
+	  description(format: RAW)
 	  galleryImages {
-          nodes {
-            id
-            title
-            altText
-            mediaItemUrl
-          }
-      }
+			nodes {
+				id
+				title
+				altText
+				mediaItemUrl
+			}
+		}
 	  image {
 		id
 		uri
@@ -52,7 +52,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		id
 	  }
 	}
-  }
+}
 `;
 
 export const PRODUCT_SLUGS = gql` query Products {

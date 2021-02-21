@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client';
 
 /**
  * GraphQL categories and products query.
@@ -38,10 +38,10 @@ const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
   products(first: 50) {
     nodes {
       id
-      productId
+      databaseId
       averageRating
       slug
-      description
+      description(format: RAW)
       image {
         id
         uri

@@ -17,15 +17,29 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "pages/*": ["./pages/*"],
-      "components/*": ["./src/components/*"],
-      "mutations/*": ["./src/mutations/*"],
-      "queries/*": ["./src/queries/*"],
-      "styles/*": ["./src/styles/*"],
-      "validator/*": ["./src/validator/*"],
-      "img/*": ["./src/img/*"],
+      "pages/*": [
+        "pages/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "mutations/*": [
+        "src/mutations/*"
+      ],
+      "queries/*": [
+        "src/queries/*"
+      ],
+      "styles/*": [
+        "src/styles/*"
+      ],
+      "validator/*": [
+        "src/validator/*"
+      ],
+      "img/*": [
+        "src/img/*"
+      ],
     }
   },
   "include": [
