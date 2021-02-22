@@ -1,8 +1,12 @@
 import omit from 'lodash/omit';
-import {getFloatVal} from 'src/functions';
 
 import {
-  ProductObject, MyImage, GalleryImage, ProductCategory, CartObject, CartProduct, CartItem, CartItemObject,
+  ProductObject,
+  MyImage,
+  GalleryImage,
+  ProductCategory,
+  CartObject,
+  CartItemObject,
 } from './metadata/Metadata';
 
 export default class ProductMapper {
@@ -93,6 +97,9 @@ export default class ProductMapper {
       cartItems.push(cartItem);
     });
 
+    // eslint-disable-next-line max-len
+    const shippingMethods = cartJson.availableShippingMethods[0].rates.map((method) => ({...omit(method, '__typename')}));
+
     const cart: CartObject = {
       cartItems,
       productCount: cartJson.contents.productCount,
@@ -100,6 +107,7 @@ export default class ProductMapper {
       subtotal: cartJson.subtotal,
       shippingTotal: cartJson.shippingTotal,
       discountTotal: cartJson.discountTotal,
+      shippingMethods,
     };
 
     return cart;

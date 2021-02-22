@@ -1,19 +1,21 @@
 import React, {useState, useContext, useEffect} from 'react';
 
 import {useMutation, useQuery} from '@apollo/client';
+import PaymentModes from 'components/checkout/PaymentModes';
+import YourOrder from 'components/checkout/YourOrder';
 import {AppContext} from 'components/context/AppContext';
-import {createCheckoutData, getFormattedCart} from 'src/functions';
+import {createCheckoutData} from 'src/functions';
+import ProductMapper from 'src/mw/Mapper';
+import {PaymentMethod} from 'src/mw/metadata/Metadata';
 
 import Billing from './Billing';
 import OrderSuccess from './OrderSuccess';
-import PaymentModes from './PaymentModes';
-import YourOrder from './YourOrder';
 
 import CHECKOUT_MUTATION from '../../mutations/checkout';
 import GET_CART from '../../queries/get-cart';
 import validateAndSanitizeCheckoutForm from '../../validator/checkout';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({paymentMethods}: {paymentMethods: PaymentMethod[]}) => {
   const initialState = {
     firstName: '',
     lastName: '',
@@ -65,7 +67,7 @@ const CheckoutForm = () => {
       // console.warn( 'completed GET_CART' );
 
       // Update cart in the localStorage.
-      const updatedCart = getFormattedCart(data);
+      const updatedCart = ProductMapper.cartFromJson(data.cart);
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
       // Update cart data in React Context.
@@ -152,7 +154,11 @@ const CheckoutForm = () => {
               <YourOrder cart={cart} />
 
               {/* Payment */}
-              <PaymentModes input={input} handleOnChange={handleOnChange} />
+              <PaymentModes
+                paymentMethods={paymentMethods}
+                input={input}
+                handleOnChange={handleOnChange}
+              />
               <div className='woo-next-place-order-btn-wrap mt-5'>
                 <button className='bg-purple-600 text-white px-5 py-3 rounded-sm w-auto xl:w-full' type='submit'>
                   Place Order

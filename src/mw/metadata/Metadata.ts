@@ -45,6 +45,7 @@ export interface CartObject {
   shippingTotal: string;
   discountTotal: string;
   productCount: number;
+  shippingMethods: ShippingMethod[];
 }
 
 export interface CartItemObject {
@@ -53,6 +54,20 @@ export interface CartItemObject {
   total: string;
   key: string;
   type: string;
+}
+
+export interface ShippingMethod {
+  id: string;
+  cost: string;
+  label: string;
+  methodId: string;
+}
+
+export interface PaymentMethod {
+  description: string;
+  icon: null;
+  id: string;
+  title: string;
 }
 
 export enum ProductType {

@@ -6,7 +6,6 @@ import {useMutation, useQuery} from '@apollo/client';
 import CartItem from 'components/cart/cart-page/CartItem';
 import {AppContext} from 'components/context/AppContext';
 import Link from 'next/link';
-import {getFormattedCart, getUpdatedItems} from 'src/functions';
 import ProductMapper from 'src/mw/Mapper';
 
 import CLEAR_CART_MUTATION from '../../../mutations/clear-cart';
@@ -16,6 +15,7 @@ import GET_CART from '../../../queries/get-cart';
 const CartItemsContainer = (): JSX.Element => {
   // @TODO wil use it in future variations of the project.
   const [cart, setCart] = useContext(AppContext);
+  console.log(cart);
   const [requestError, setRequestError] = useState(null);
 
   // Get Cart Data.

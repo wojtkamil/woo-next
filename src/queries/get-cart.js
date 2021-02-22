@@ -3,6 +3,16 @@ import {gql} from '@apollo/client';
 const GET_CART = gql`
   query GET_CART {
     cart {
+      availableShippingMethods {
+        rates {
+          cost
+          id
+          instanceId
+          label
+          methodId
+          instanceId
+        }
+      }
       contents {
         nodes {
           key

@@ -1,8 +1,9 @@
-import {Fragment} from 'react';
+import React from 'react';
 
-import CheckoutCartItem from './CheckoutCartItem';
+import CheckoutCartItem from 'components/checkout/CheckoutCartItem';
+import {CartObject} from 'src/mw/metadata/Metadata';
 
-const YourOrder = ({cart}) => (
+const YourOrder = ({cart}: {cart: CartObject}): JSX.Element => (
   <>
     { cart ? (
       <>
@@ -16,16 +17,14 @@ const YourOrder = ({cart}) => (
             </tr>
           </thead>
           <tbody>
-            { cart.products.length && (
-						  cart.products.map((item) => (
-  <CheckoutCartItem key={item.id} item={item} />
-						  ))
+            { cart.cartItems.length && (
+              cart.cartItems.map((item) => <CheckoutCartItem key={item.key} item={item} />)
             ) }
             {/* Total */}
             <tr className='bg-gray-200'>
               <td className='' />
               <td className='woo-next-checkout-total font-normal text-xl'>Subtotal</td>
-              <td className='woo-next-checkout-total font-bold text-xl'>{ cart.totalProductsPrice }</td>
+              <td className='woo-next-checkout-total font-bold text-xl'>{ cart.total }</td>
             </tr>
             {/* <tr className="">
 							<td className=""/>
